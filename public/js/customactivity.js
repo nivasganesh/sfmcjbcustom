@@ -30,7 +30,7 @@ define([
         if (data) {
             payload = data;
         }
-
+        var message;
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
@@ -64,21 +64,24 @@ define([
     function onGetEndpoints(endpoints) {
         console.log(endpoints);
     }
-
+    function onClickedNext () {
+        save();
+    }
     function save() {
-        var postcardURLValue = $('#postcard-url').val();
-        var postcardTextValue = $('#postcard-text').val();
+        var name = $('#select1').find('option:selected').html();
+        var value = getMessage();
 
-        payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens,
-            "emailAddress": "{{Contact.Attribute.SEC_CONTACT.CONTACT_EMAIL}}"
-        }];
+        payload.name = name;
+
+        payload['arguments'].execute.inArguments = [{ "message": value }];
 
         payload['metaData'].isConfigured = true;
 
-        console.log(payload);
         connection.trigger('updateActivity', payload);
     }
 
+    function getMessage() {
+        return $('#select1').find('option:selected').attr('value').trim();
+    }
 
 });
