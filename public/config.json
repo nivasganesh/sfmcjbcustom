@@ -31,7 +31,7 @@
     }
   },
   "configurationArguments": {
-    "applicationExtensionKey": "8805cbe7-b642-4a35-b4f2-c851f2df47d9",
+    "applicationExtensionKey": "0742dd45-229f-4069-907c-f224e9ef776b",
     "save": {
       "url": "https://fast-cove-21025.herokuapp.com/journeybuilder/save",
       "verb": "POST",
